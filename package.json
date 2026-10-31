@@ -1,0 +1,8 @@
+{
+  "name": "plainly",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Explains it simply, and shows you what it left out.",
+  "license": "MIT",
+  "scripts": { "test": "node --test tests/*.test.js" }
+}
