@@ -46,8 +46,9 @@ If the user's email has no commits here, skip quietly and use the profile.
   (`RetryPolicy.java:18`)".
 - Can't cite it? Don't state it as fact. Either go read the code, or mark it
   plainly as a guess: "probably — I didn't open the worker".
-- Before sending, re-check each citation points at code that says what you
-  claimed. Line numbers drift as you read; fix them.
+- Before sending, verify each citation mechanically: `grep -n` the exact
+  symbol or phrase and use the line it returns. Don't trust remembered line
+  numbers, even in a file you just read.
 
 ## 5. The provenance receipt
 

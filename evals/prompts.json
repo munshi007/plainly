@@ -1,7 +1,41 @@
 [
-  { "id": "race-condition", "prompt": "What is a race condition?" },
-  { "id": "k8s-two-part", "prompt": "What is a Kubernetes pod, and why would I use one instead of just running a container?" },
-  { "id": "db-index", "prompt": "How does a database index make queries faster?" },
-  { "id": "expert-peer", "prompt": "What's the difference between a roux and a beurre manié?", "expectMode": "peer" },
-  { "id": "terse-request", "prompt": "What is DNS? Keep it short.", "maxWords": 100 }
+  {
+    "id": "race-condition",
+    "prompt": "What is a race condition?"
+  },
+  {
+    "id": "k8s-two-part",
+    "prompt": "What is a Kubernetes pod, and why would I use one instead of just running a container?"
+  },
+  {
+    "id": "db-index",
+    "prompt": "How does a database index make queries faster?"
+  },
+  {
+    "id": "expert-peer",
+    "prompt": "What's the difference between a roux and a beurre manié?",
+    "expectMode": "peer"
+  },
+  {
+    "id": "terse-request",
+    "prompt": "What is DNS? Keep it short.",
+    "maxWords": 100
+  },
+  {
+    "id": "stale-doc",
+    "prompt": "Read {ROOT}/evals/fixtures/recs-handoff.md. How does ranking work in this service?",
+    "tools": "Skill,Read,Grep,Glob,Bash(grep:*)",
+    "bodyMust": [
+      "rank_live|live|every (product-page )?request",
+      "never (run|been run|served|handled|seen)|not (yet )?(been )?(run|tested|verified|proven)|untested|unverified|real (production )?(traffic|shoppers|users)|production traffic"
+    ],
+    "receiptFirst": "never|not (yet )?(been )?(run|tested|verified|proven|measured)|untested|unverified|production|click",
+    "stale": {
+      "terms": "nightly|batch|scores table|rank_batch",
+      "history": "used to|was|were|removed|deleted|replaced|dropped|no longer|previously|originally|until|old|earlier|before|started|at first|initially|since"
+    },
+    "answerMust": [
+      "click.{0,40}(not|never|nobody|no one|hasn.t|unmeasured)|(not|never|nobody|no one|hasn.t).{0,60}click"
+    ]
+  }
 ]

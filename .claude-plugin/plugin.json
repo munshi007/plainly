@@ -1,6 +1,6 @@
 {
   "name": "plainly",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Explains things in terms of what you already know, and tells you what it left out. Per-domain reader profile, anchor-first explanations, a fidelity receipt on every answer, and per-turn re-anchoring so the style does not drift.",
   "author": { "name": "Rohan Munshi" },
   "license": "MIT",

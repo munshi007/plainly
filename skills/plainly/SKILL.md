@@ -1,7 +1,7 @@
 ---
 name: plainly
 description: "Explain something to this specific reader, built on what they already know, and say what was left out. Use whenever the user asks what something is, how it works, why it happens, or to explain a doc, PR, error, test failure, concept, system or decision — and whenever they ask for it 'simple', 'in plain English', 'layman terms', 'like I'm new', 'ELI5' or 'from the ground up'. Also use to set up or change the reader profile, or switch explanation mode (ground-up, bridge, peer, kid). Not for rewriting finished text for readability (use a plain-language skill for that) and not for diagrams."
-version: 0.2.1
+version: 0.3.0
 ---
 
 # plainly
@@ -67,6 +67,32 @@ and offer two or three task-sized versions:
 > the request path for one API call, why `X` exists, or what changed in the last release?
 
 A refusal that scopes down is better than a confident tour that's mostly wrong.
+
+## Step 1b — Read the source's own status first
+
+Before writing anything, read the source for what it says about itself. Two
+things in it override everything else:
+
+1. **What is current.** Docs get updated; designs get replaced. Look for
+   update notes, changelogs, dated sections, "superseded", "removed",
+   "deleted", "now", "phase N", and later commits that changed what the doc
+   describes. **The body describes the design as it is now.** If history
+   matters to the reader, one clause in the body is enough ("there used to be a
+   second copy in Python; it was deleted on 26 Oct"). Never build the body on
+   the old design and correct it in the receipt — the reader will have learned
+   the wrong model by the time they reach it.
+2. **What is unproven.** Look for sections and phrases like "not proven",
+   "not verified", "untested", "never ran", "assumption", "known issues",
+   "limitations", "open questions", "TODO". **Anything the source flags as
+   unproven stays flagged** — in the body, at the sentence that makes the claim
+   ("each check is designed to return one of four states; none has run against
+   real data yet"). If the source has a headline caveat (a whole section of it),
+   it is also the **first** receipt bullet. Stating as fact what the source
+   itself calls unproven is the exact failure this skill exists to prevent.
+3. **When later updates resolve some caveats, go item by item.** A caveat
+   list dated before an update is not cancelled by it. For each item, decide:
+   resolved (cite where), or **still open**. Name the still-open ones
+   explicitly. Never let one resolved item clear the whole list.
 
 ## Step 2 — Pick the anchor
 
@@ -148,12 +174,19 @@ Format:
 ```
 ---
 **What I left out**
-- The real rule is a threshold, not yes/no — it's *what share* of sends had
-  nothing comparable. Doesn't change what you'd do unless you're near the line.
-- The two-email example is mine, not from the doc.
+- A queue can copy one order to several systems at once; a ticket rail can't.
+  Doesn't change the decision, but it's where the comparison stops working.
+- The 200-orders-on-a-Friday example is mine, not from the doc.
 ```
 
 Rules:
+
+- **The receipt carries simplifications, not corrections.** If a bullet says
+  "actually, this changed" or "this part no longer exists", the body is wrong:
+  fix the body (Step 1b) and drop the bullet.
+- **The source's own caveats come first.** If the source flags something as
+  unproven or untested and your explanation touches it, that is the first
+  bullet, even if you also hedged it in the body.
 
 - Two or three bullets is normal. Zero is allowed only for a genuinely complete
   answer to a tiny question — then write `**What I left out:** nothing that
@@ -172,6 +205,22 @@ Before sending, check:
 - Would the reader, asked "what does it do?", answer correctly using only what
   you wrote?
 - Is every claim in the explanation backed by the source (or marked **Added**)?
+- Does the body describe the **current** design, and does every claim the
+  source calls unproven still carry that flag? (Step 1b)
+
+**Final pass — two tool calls, not a mental check.** Whenever the answer is
+about a file or document you read, run these before sending. Skipping them is
+how wrong line numbers and dropped caveats get through on long sources.
+
+1. **Citations.** One `grep -n` call over the source(s) with every phrase you
+   cite: `grep -n -e 'Unverified at runtime' -e 'SELECTION_PRONE' -e '...' FILE`.
+   Replace every line number in your draft with the one grep returns. Line
+   numbers drift in memory even when the file hasn't changed, and one wrong
+   citation makes the reader distrust all of them.
+2. **Caveats.** One `grep -n -i -E 'not proven|unproven|not verified|unverified|untested|never (run|ran|executed|reached)|not (yet )?tested|assum|known issue|limitation|open question|TODO' FILE`.
+   For every hit that touches what you explained: it is either in your answer
+   (body or first receipt bullet), resolved by a later section you cite, or
+   irrelevant to the question. If it's none of those, add it.
 
 Don't optimise for a readability score. Short words with wrong facts is the
 failure this skill exists to prevent.
