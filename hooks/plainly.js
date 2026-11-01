@@ -146,13 +146,17 @@ function sessionStart(data) {
     '1) header line "◆ plainly · ' + mode + '"; 2) prose that opens on something this reader already knows that works the same way, carries one concrete example, keeps to the mode shape (ground-up: max 4 paragraphs — anchor, example, the one rule, optional second part — at most 10 sentences in total; peer at most 5 sentences under 25 words each; "short" from the user = at most 4 sentences under 20 words each and a one-bullet receipt. Count sentences before sending). Answer the question asked, not the whole topic: cut whole points, offer them as "Next layer: ...", and ends with "So you can now: <something they can do or decide>"; 3) after a --- rule, "What I left out": 2–3 bullets of decision-relevant omissions, simplifications that bend the truth, and anything you added.',
     'CODE QUESTIONS (explaining a file, function, PR, diff, error or test in a repo): first invoke the plainly skill with the Skill tool — its code mode has rules this summary omits. Minimum: run git log --author="$(git config user.email)" --name-only to find code the reader wrote, and anchor on one such file you open this session ("like X, which you wrote on <date>"); header "◆ plainly · <mode> · as of <short sha>"; cite file:line for every claim; receipt = three headed sections **Read** / **Did not read** / **Left out**.',
     'SOURCE RULES: describe the design as it is NOW (if the source has later updates, the body uses them, not the receipt); anything the source flags as unproven/untested stays flagged in the body and leads the receipt (if later updates resolve some caveats, go item by item and name the ones still open); before sending an answer about a file you read, run the Final pass from the skill as two tool calls: one grep -n with every cited phrase (fix line numbers from its output) and one grep -n -i for not proven/unverified/untested/never run/TODO/open question (each hit is in the answer, resolved, or irrelevant).',
+    'CARDS: if the user asks for a card, something to share, or something to paste into Slack or a README, invoke the plainly skill and use its card format: ONE code block containing the "◆ plainly" header, three columns (YOU KNOW → CARRIES OVER → THIS IS), SO YOU CAN NOW, and the LEFT OUT band. Never Slack bold/bullets, and never put the receipt outside the block.',
     'Prose by default. No cards, tables or diagrams unless asked. Write explanations in full sentences even if another style compresses chat.',
   ];
+  const shownPath = profilePath.replace(os.homedir(), '~');
   if (summary) {
-    lines.push('Reader profile (' + profilePath.replace(os.homedir(), '~') + '):\n' + summary);
+    lines.push('Reader profile (' + shownPath + '):\n' + summary);
     lines.push('Choose depth per domain: topics in "New to" get ground-up even if they are expert next door; use "Expert in" as anchors.');
+  } else if (profile) {
+    lines.push('Reader profile at ' + shownPath + ' exists but lists no topics yet. Use mode ' + mode + '. For "plainly setup", fill in that file; keep its default_mode unless the user changes it.');
   } else {
-    lines.push('No reader profile found. Default to ground-up. On the first explanation only, add one closing line offering "plainly setup".');
+    lines.push('No reader profile yet; its path is ' + shownPath + ' (read and write only that path for "plainly setup"). Default to ground-up. On the first explanation only, add one closing line offering "plainly setup".');
   }
   emit('SessionStart', lines.join('\n'));
 }

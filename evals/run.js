@@ -94,6 +94,21 @@ function score(text, maxWords) {
   let pass = 0;
   results.forEach(({ p, t }, i) => {
     const s = score(t, p.maxWords);
+    if (p.card) {
+      // Share card: everything, receipt included, must live inside one code block.
+      const blocks = t.match(/```[\s\S]*?```/g) || [];
+      const fails = [];
+      if (blocks.length !== 1) fails.push(`expected 1 code block, got ${blocks.length}`);
+      const b = blocks[0] || '';
+      for (const [name, re] of [['header', /◆ plainly · /], ['columns', /YOU KNOW[\s\S]*CARRIES OVER[\s\S]*THIS IS/], ['so you can now', /SO YOU CAN NOW/], ['left out inside block', /LEFT OUT/]]) {
+        if (!re.test(b)) fails.push(`card lacks ${name}`);
+      }
+      if (!fails.length) pass++;
+      fs.writeFileSync(path.join(outDir, `${i}-${p.id}.md`), t);
+      console.log(`${fails.length ? 'FAIL' : 'PASS'}  ${p.id.padEnd(18)} card blocks=${blocks.length}`);
+      for (const f of fails) console.log(`      ${f}`);
+      return;
+    }
     const content = contentChecks(p, s.body, s.receiptText);
     const ok = s.header && s.soYouCan && s.receipt && s.withinLimit && (!p.expectMode || s.mode === p.expectMode) && !content.length;
     if (ok) pass++;

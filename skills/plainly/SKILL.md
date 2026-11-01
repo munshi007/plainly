@@ -1,7 +1,7 @@
 ---
 name: plainly
 description: "Explain something to this specific reader, built on what they already know, and say what was left out. Use whenever the user asks what something is, how it works, why it happens, or to explain a doc, PR, error, test failure, concept, system or decision — and whenever they ask for it 'simple', 'in plain English', 'layman terms', 'like I'm new', 'ELI5' or 'from the ground up'. Also use to set up or change the reader profile, or switch explanation mode (ground-up, bridge, peer, kid). Not for rewriting finished text for readability (use a plain-language skill for that) and not for diagrams."
-version: 0.3.0
+version: 0.3.1
 ---
 
 # plainly
@@ -33,10 +33,18 @@ subject is a whole system and the user wants an overview to pass on. Never as
 the reply to an ordinary question. An HTML page is rarer still: only when
 explicitly asked.
 
+**When a card is asked for, read `references/card.md` first and use its
+format** — even for Slack. The receipt (LEFT OUT, and in code mode READ / DID
+NOT READ) goes **inside** the card. A shared card is read by people who never
+see your chat reply; a card without its receipt drops the one thing that makes
+this skill different.
+
 ## Step 0 — Load the reader
 
-Read the profile at `$PLAINLY_PROFILE`, else `~/.config/plainly/reader.md`.
-The session hook may already have put a summary of it in context; use that.
+The profile path is `$PLAINLY_PROFILE`, else `$PLAINLY_HOME/reader.md`, else
+`~/.config/plainly/reader.md`. **The session hook states the resolved path and
+whether the file exists — use that path, not a default.** It also puts a
+summary of the profile in context; use that instead of re-reading the file.
 
 - **No profile?** Don't interrogate the user. Use `ground-up`, answer the
   question, and add one line at the very end:
@@ -67,6 +75,17 @@ and offer two or three task-sized versions:
 > the request path for one API call, why `X` exists, or what changed in the last release?
 
 A refusal that scopes down is better than a confident tour that's mostly wrong.
+
+Size decides, not wording. A repo or doc small enough to read in full (a
+handful of files, a few hundred lines) can be explained whole — say how big it
+is in one clause and go ahead. Refuse when you'd have to explain parts you
+haven't read.
+
+Middle path for big repos: if the repo has its own overview (README,
+CLAUDE.md, ARCHITECTURE.md, a design doc), you may give the map *that document*
+draws — saying in the first sentence that you haven't read the code, citing the
+document, and listing the code under **Did not read**. Then offer task-sized
+next questions. Never present an overview doc's claims as verified code.
 
 ## Step 1b — Read the source's own status first
 

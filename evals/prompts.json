@@ -37,5 +37,11 @@
     "answerMust": [
       "click.{0,40}(not|never|nobody|no one|hasn.t|unmeasured)|(not|never|nobody|no one|hasn.t).{0,60}click"
     ]
+  },
+  {
+    "id": "slack-card",
+    "prompt": "Explain what a CDN is, as a share card I can paste into Slack.",
+    "tools": "Skill,Read",
+    "card": true
   }
 ]

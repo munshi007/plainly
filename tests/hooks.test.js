@@ -67,6 +67,21 @@ test('session start with profile injects summary', () => {
   assert.match(ctx, /New to: Kubernetes/);
 });
 
+test('profile with a mode but no topics is not reported missing', () => {
+  const home = tmpHome();
+  fs.writeFileSync(path.join(home, 'reader.md'), '---\ndefault_mode: kid\n---\n');
+  const ctx = run('session', { session_id: 's1' }, { PLAINLY_HOME: home });
+  assert.match(ctx, /mode: kid/);
+  assert.match(ctx, /exists but lists no topics/);
+  assert.doesNotMatch(ctx, /No reader profile/);
+});
+
+test('missing profile states the resolved path', () => {
+  const home = tmpHome();
+  const ctx = run('session', { session_id: 's1' }, { PLAINLY_HOME: home });
+  assert.ok(ctx.includes(path.join(home, 'reader.md').replace(os.homedir(), '~')));
+});
+
 test('mode switch persists for the session only', () => {
   const home = tmpHome();
   let ctx = run('prompt', { session_id: 'abc', prompt: '/plainly peer' }, { PLAINLY_HOME: home });

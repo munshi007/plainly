@@ -32,7 +32,10 @@ Keep columns ≤ 22 chars wide, 3 columns, total width ≤ 76.
     and email at once. A paper ticket can't.
 ```
 
-For Slack, wrap the card in a code block so the columns survive.
+For Slack, wrap the card in a code block so the columns survive. Don't
+convert it to Slack bold/bullets: the three columns and the LEFT OUT band are
+the format. The `◆ plainly` header line and the LEFT OUT band are both
+**inside** the code block — the person you share it with only sees the block.
 
 ## Code mode card
 

@@ -1,7 +1,9 @@
 # Reader profile — setup and updates
 
 The profile is a plain Markdown file the user owns:
-`$PLAINLY_PROFILE`, else `~/.config/plainly/reader.md`.
+`$PLAINLY_PROFILE`, else `$PLAINLY_HOME/reader.md`, else
+`~/.config/plainly/reader.md`. The session hook states the resolved path; read
+and write **that** file, never a hard-coded default.
 Template: `templates/reader.md` in the plugin root (`${CLAUDE_PLUGIN_ROOT}/templates/reader.md`).
 
 ## Setup ("plainly setup")
