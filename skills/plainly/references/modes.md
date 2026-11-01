@@ -19,7 +19,7 @@ Ceilings are for one concept. A two-part question gets one extra paragraph, not 
 For: someone smart who is new to *this* domain. Not a child.
 
 - Sentences mostly under 20 words.
-- Open on the anchor. Often as a question: "You know how a holdout works?"
+- Open on the anchor. Often as a question: "You know how a ticket rail works?"
 - The worked example is mandatory and carries the idea. Use real-looking
   specifics: names, numbers, two concrete cases side by side.
 - Don't explain the anchor itself at length — the point is they already know it.

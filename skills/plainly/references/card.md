@@ -16,20 +16,20 @@ Keep columns ≤ 22 chars wide, 3 columns, total width ≤ 76.
 ◆ plainly · ground-up                          what I left out ▾
 
   YOU KNOW          →   CARRIES OVER      →   THIS IS
-  A holdout: a small    A small group gets    A canary release:
-  group gets something  the change; the       ship to 2% first,
-  different, and you    rest is your          watch errors, roll
-  compare it to         baseline.             back before the
-  everyone else.                              other 98% see it.
+  The ticket rail:      Whoever takes the     A message queue:
+  servers clip an       order hands off and   the website clips
+  order and go back     moves on; stations    each online order
+  to the floor.         pull tickets when     on, says "got it",
+                        they're ready.        and systems catch up.
 
   SO YOU CAN NOW
-  Decide whether a risky change goes to everyone or to a canary first.
+  Ask your developer how many orders were lost in rushes — that
+  number says whether a queue is worth paying for now.
 
   ▾ LEFT OUT (2)
-  · The canary slice usually isn't random (one region, one server) —
-    fine for catching crashes, weaker as proof of cause.
-  · Real rollouts step up 2% → 10% → 50% with automatic rollback.
-    The numbers here are my example.
+  · Cost: one more system to set up, pay for and watch.
+  · Where it breaks: a queue can copy one order to kitchen, payments
+    and email at once. A paper ticket can't.
 ```
 
 For Slack, wrap the card in a code block so the columns survive.

@@ -25,31 +25,41 @@ A Claude Code plugin for explanations that fit the person reading them.
 
 ## What you get
 
-Ask a normal question. Get a normal answer — prose, not a diagram:
+Ask a normal question. Get a normal answer — prose, not a diagram.
+
+Here the reader is a head chef who is new to software. Their profile says so
+in three lines, and that changes everything about the answer:
+
+```
+# Expert in
+- running a restaurant kitchen (head chef, 12 years)
+# New to
+- software and how web apps work
+```
+
+They ask: *"My developer keeps saying we need a message queue for online
+orders. What is that?"*
 
 > ◆ plainly · ground-up
 >
-> **You know how a holdout works?** A small group gets something different,
-> everyone else carries on as normal, and you compare the two. A canary
-> release is the same idea, pointed at risk instead of lift.
+> You already use a message queue: your ticket rail. When a server rings in an order, they don't stand at the pass waiting for the food. They clip the ticket on the rail and go back to the floor, and each station pulls tickets in order when it's ready.
 >
-> You ship the new version to a small slice of users first — say 2%. The other
-> 98% keep the old version. Then you watch both groups side by side.
+> In software, a message queue does the same job. Say 200 online orders arrive between 7 and 8 on a Friday night. Without a queue, the website has to pass each order straight to the kitchen screen, the card payment, and the receipt email, all at once. If any of those is slow or down, the customer gets an error and the order can be lost. With a queue, the website clips each order onto the rail in a split second and tells the customer "order received." The other systems then work through the orders at their own pace.
 >
-> Say the new version has a bug that only shows up under real traffic. On the
-> canary slice, errors jump from 0.1% to 3% within ten minutes. You roll back.
-> Only 2% of users ever saw it, and you know the new code caused it because the
-> other 98% stayed flat.
+> The key rule is that the queue holds each order until something confirms it was handled. So if the kitchen printer jams or payments are slow, orders wait instead of disappearing. Your developer is probably raising this because orders are getting dropped, or the site slows down, during rushes. That's the problem a queue fixes.
 >
-> **So you can now:** decide whether a risky change should go to everyone at
-> once, or to a canary slice first.
+> Next layer: what a queue costs to run, and what can still go wrong, such as the same order being sent to the kitchen twice.
+>
+> So you can now: ask your developer whether orders have actually been lost during busy times, and how many. That number tells you whether a queue is worth paying for now or can wait.
 >
 > ---
+>
 > **What I left out**
-> - Unlike a holdout, the canary slice usually isn't random — often it's one
->   region or one server. Fine for catching crashes; weaker as proof of cause.
-> - Real canaries step up (2% → 10% → 50%) with automatic rollback rules. The
->   2% and 3% figures are my example, not a standard.
+> - **Cost and effort:** a queue is one more piece of software to set up, pay for, and watch. It's not free insurance.
+> - **Where the comparison breaks down:** a real ticket rail is one line that everyone reads. A software queue can send copies of the same order to several systems, like the kitchen, payments, and email, which a paper ticket can't do.
+> - **What I assumed:** I guessed your developer's reason. They may be thinking ahead about growth rather than fixing a problem you have today.
+
+<sub>A real answer, unedited.</sub>
 
 ## Install
 

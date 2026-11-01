@@ -30,10 +30,10 @@ test('template placeholders are ignored', () => {
 });
 
 test('parses domains and mode', () => {
-  const p = parseProfile('---\ndefault_mode: peer\n---\n# Expert in\n- bandits\n- holdouts\n# New to\n- Flyway\n');
+  const p = parseProfile('---\ndefault_mode: peer\n---\n# Expert in\n- sourdough\n- knife skills\n# New to\n- Kubernetes\n');
   assert.strictEqual(p.mode, 'peer');
-  assert.deepStrictEqual(p.sections['expert in'], ['bandits', 'holdouts']);
-  assert.deepStrictEqual(p.sections['new to'], ['Flyway']);
+  assert.deepStrictEqual(p.sections['expert in'], ['sourdough', 'knife skills']);
+  assert.deepStrictEqual(p.sections['new to'], ['Kubernetes']);
 });
 
 test('invalid mode ignored', () => {
@@ -60,18 +60,18 @@ test('session start without profile offers setup', () => {
 
 test('session start with profile injects summary', () => {
   const home = tmpHome();
-  fs.writeFileSync(path.join(home, 'reader.md'), '---\ndefault_mode: bridge\n---\n# Expert in\n- bandits\n# New to\n- Flyway\n');
+  fs.writeFileSync(path.join(home, 'reader.md'), '---\ndefault_mode: bridge\n---\n# Expert in\n- sourdough\n# New to\n- Kubernetes\n');
   const ctx = run('session', { session_id: 's1' }, { PLAINLY_HOME: home });
   assert.match(ctx, /mode: bridge/);
-  assert.match(ctx, /Expert in: bandits/);
-  assert.match(ctx, /New to: Flyway/);
+  assert.match(ctx, /Expert in: sourdough/);
+  assert.match(ctx, /New to: Kubernetes/);
 });
 
 test('mode switch persists for the session only', () => {
   const home = tmpHome();
   let ctx = run('prompt', { session_id: 'abc', prompt: '/plainly peer' }, { PLAINLY_HOME: home });
   assert.match(ctx, /switched to peer/);
-  ctx = run('prompt', { session_id: 'abc', prompt: 'what is a holdout?' }, { PLAINLY_HOME: home });
+  ctx = run('prompt', { session_id: 'abc', prompt: 'what is a pod?' }, { PLAINLY_HOME: home });
   assert.match(ctx, /^PLAINLY \(peer\)/);
   ctx = run('prompt', { session_id: 'other', prompt: 'hi' }, { PLAINLY_HOME: home });
   assert.match(ctx, /^PLAINLY \(ground-up\)/);

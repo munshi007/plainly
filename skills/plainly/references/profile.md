@@ -8,8 +8,8 @@ Template: `templates/reader.md` in the plugin root (`${CLAUDE_PLUGIN_ROOT}/templ
 
 Keep it under two minutes. Ask at most three questions, in one message:
 
-1. What are you genuinely expert in? Narrow topics, e.g. "bandit algorithms",
-   not "maths".
+1. What are you genuinely expert in? Narrow topics, e.g. "sourdough baking",
+   not "cooking".
 2. What do you work with but not deeply? And what are you new to?
 3. Which default: ground-up (assume nothing), bridge (relate to what I know),
    or peer (keep the jargon)?
@@ -33,8 +33,8 @@ the user edit before saving.
 
 ## Rules
 
-- Per-domain, narrow entries. Expertise is task-specific: knowing bandits says
-  nothing about knowing Flyway.
+- Per-domain, narrow entries. Expertise is task-specific: knowing Postgres says
+  nothing about knowing Kubernetes.
 - The profile is a guess about the reader. The reader's words in this session
   beat it every time.
 - Nothing in it is sent anywhere. It's read locally by the session hook and the

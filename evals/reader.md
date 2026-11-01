@@ -2,10 +2,9 @@
 default_mode: ground-up
 ---
 # Expert in
-- A/B testing and holdout groups
-- product analytics
+- professional cooking (restaurant kitchens, French technique)
 # Comfortable with
-- Python, SQL
+- spreadsheets, basic Python
 # New to
 - Kubernetes
 - database internals

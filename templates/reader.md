@@ -9,20 +9,20 @@ default_mode: ground-up
 
 # Expert in
 <!-- Things you know deeply. plainly uses these as anchors and skips explaining them.
-     Be narrow: "multi-armed bandits", not "statistics". Expertise is task-specific. -->
-- example: multi-armed bandits, holdout groups, marketing attribution
+     Be narrow: "sourdough baking", not "cooking". Expertise is task-specific. -->
+- example: running a restaurant kitchen, sourdough baking
 
 # Comfortable with
 <!-- You can follow it, but don't assume the details. -->
-- example: Java, Spring Boot, SQL
+- example: spreadsheets, basic Python
 
 # New to
 <!-- Explain these from the ground up, even if you are expert next door. -->
-- example: Flyway migration internals, Kubernetes networking
+- example: how web apps work, Kubernetes networking
 
 # Anchors that work for me
 <!-- Optional. Things from your life or work that make good comparisons. -->
-- example: running an A/B test, a kitchen during dinner service
+- example: a kitchen during dinner service, a busy train station
 
 # Never do
 <!-- Optional. Things that annoy you in explanations. -->

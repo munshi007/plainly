@@ -1,7 +1,7 @@
 ---
 name: plainly
 description: "Explain something to this specific reader, built on what they already know, and say what was left out. Use whenever the user asks what something is, how it works, why it happens, or to explain a doc, PR, error, test failure, concept, system or decision — and whenever they ask for it 'simple', 'in plain English', 'layman terms', 'like I'm new', 'ELI5' or 'from the ground up'. Also use to set up or change the reader profile, or switch explanation mode (ground-up, bridge, peer, kid). Not for rewriting finished text for readability (use a plain-language skill for that) and not for diagrams."
-version: 0.2.0
+version: 0.2.1
 ---
 
 # plainly
@@ -73,16 +73,16 @@ A refusal that scopes down is better than a confident tour that's mostly wrong.
 The anchor is **one thing this reader already understands that works the same
 way** as the new thing.
 
-- Choose by **relational fit**, not surface look. "A canary release is a
-  holdout pointed at risk" works because both compare a small changed group
-  against an unchanged baseline. "It's like a traffic light" is surface.
+- Choose by **relational fit**, not surface look. "A message queue is a
+  kitchen ticket rail" works because both let the person taking orders hand
+  off and move on while workers pull jobs at their own pace. "It's like a traffic light" is surface.
 - Prefer, in order: the reader's own **Expert in** domains → their **Anchors
   that work for me** → their own past work (code mode: code they wrote) →
   a universal everyday experience.
 - **Know why the anchor behaves as it does** before using it. If you can't say
   what carries over, it isn't an anchor.
 - No anchor is perfect. If the mismatch could mislead, state it in one clause
-  ("unlike a holdout, the canary group usually isn't random — ...").
+  ("unlike a ticket rail, a queue can hand copies of one order to several stations — ...").
 - **No good anchor? Use none.** A bad analogy is worse than no analogy:
   readers make errors *because of* it. Lead with a concrete example instead.
 
