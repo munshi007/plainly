@@ -3,13 +3,13 @@
   "owner": { "name": "Rohan Munshi" },
   "metadata": {
     "description": "Calibrated explanations that show what they left out.",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
       "name": "plainly",
       "description": "Explains it simply, and shows you what it left out.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "source": "./",
       "category": "productivity"
     }

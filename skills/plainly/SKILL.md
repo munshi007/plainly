@@ -1,7 +1,7 @@
 ---
 name: plainly
 description: "Explain something to this specific reader, built on what they already know, and say what was left out. Use whenever the user asks what something is, how it works, why it happens, or to explain a doc, PR, error, test failure, concept, system or decision — and whenever they ask for it 'simple', 'in plain English', 'layman terms', 'like I'm new', 'ELI5' or 'from the ground up'. Also use to set up or change the reader profile, or switch explanation mode (ground-up, bridge, peer, kid). Not for rewriting finished text for readability (use a plain-language skill for that) and not for diagrams."
-version: 0.1.0
+version: 0.2.0
 ---
 
 # plainly

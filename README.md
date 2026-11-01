@@ -53,6 +53,8 @@ Ask a normal question. Get a normal answer — prose, not a diagram:
 
 ## Install
 
+Needs Claude Code and Node.js 18+ on your `PATH` (the always-on part is two small Node hooks).
+
 ```
 /plugin marketplace add munshi007/plainly
 /plugin install plainly@plainly

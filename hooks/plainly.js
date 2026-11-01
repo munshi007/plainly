@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // plainly — always-on fragment.
 //
-//   node anchor.js session   (SessionStart)      inject invariant + reader summary
-//   node anchor.js prompt    (UserPromptSubmit)  track mode switches, re-anchor every turn
+//   node plainly.js session  (SessionStart)      inject invariant + reader summary
+//   node plainly.js prompt   (UserPromptSubmit)  track mode switches, re-anchor every turn
 //
 // Why per-turn: instruction-following drifts measurably within a few turns of a
 // long conversation. A skill fires episodically; this keeps the contract in view.
