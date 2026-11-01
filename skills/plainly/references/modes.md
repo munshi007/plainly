@@ -9,11 +9,10 @@ what matters. The receipt is present in every mode.
 | Assumed prior knowledge | none in this domain | expert in an adjacent domain | fluent in this domain | a curious 10-year-old |
 | Examples | exactly one, worked through | one, short | only if it disambiguates | one, physical and everyday |
 | Jargon | none undefined; at most 2 new terms | defined on first use, then used | kept as-is | none |
-| Length | 150–350 words | 100–250 words | 40–150 words | 80–200 words |
+| Shape (before "So you can now:") | ≤ 4 paragraphs, ≤ 10 sentences (~200 words) | ≤ 3 paragraphs, ≤ 8 sentences | 1–2 paragraphs, ≤ 5 sentences | ≤ 3 paragraphs, ≤ 8 short sentences |
 | Anchor source | reader's expert domain or everyday life | the adjacent domain, explicitly | a neighbouring concept in the same field, or none | everyday physical world |
 
-Lengths are for one concept. A multi-part question may run longer; split it
-into one short section per part rather than one long block.
+Ceilings are for one concept. A two-part question gets one extra paragraph, not a second essay.
 
 ## ground-up (default)
 

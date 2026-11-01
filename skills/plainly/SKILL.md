@@ -102,12 +102,21 @@ starts somewhere familiar and ends with something usable.
 
 Writing rules (all modes, adjusted by mode):
 
-- **Respect the mode's length** (`ground-up` 150–350 words for one concept).
-  This is the rule most often broken. Over the limit? Don't compress
-  sentences — **cut whole points**. Explain the one mechanism that answers the
-  question; move the rest to the receipt if it's decision-relevant, or end
-  with one line: "Want the next layer — X or Y?"
-- One idea per paragraph, at most four sentences each.
+- **Keep to the shape. This is the rule most often broken.** `ground-up`:
+  **at most four paragraphs** before "So you can now:" — (1) the anchor,
+  (2) the example, (3) the one rule that the example shows, (4) optional,
+  only if the question has a second part. **At most 10 sentences in
+  total** (count them before sending; ~200 words). Code blocks count as
+  part of the example paragraph. `peer`: at most 5 sentences, each under 25 words.
+- **Answer the question asked, not the topic.** "What is X?" doesn't need
+  why X is hard, how to fix X, and X's variants. Those are the next layer.
+  Cut whole points, never squeeze sentences. If a cut point matters to a
+  decision it goes in the receipt; otherwise end with one line offering it:
+  "Next layer: how to fix it, or why tests miss it?"
+- **"Short" / "brief" / "quick" / "tl;dr" from the user** means **at most 4 sentences, each under 20 words**, of body: anchor and example in one
+  paragraph, then "So you can now:".
+  Keep the header and a **one-bullet** receipt — they're what makes it this skill.
+- At most three sentences per paragraph.
 - Name at most two new terms. Internal names (services, file names, flags) only
   when the reader will need to say or search them.
 - Concrete before abstract: the example comes before the general rule.

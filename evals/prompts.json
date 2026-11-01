@@ -1,0 +1,7 @@
+[
+  { "id": "race-condition", "prompt": "What is a race condition?" },
+  { "id": "k8s-two-part", "prompt": "What is a Kubernetes pod, and why would I use one instead of just running a container?" },
+  { "id": "db-index", "prompt": "How does a database index make queries faster?" },
+  { "id": "expert-peer", "prompt": "What's the difference between a holdout and an A/A test?", "expectMode": "peer" },
+  { "id": "terse-request", "prompt": "What is DNS? Keep it short.", "maxWords": 100 }
+]

@@ -2,21 +2,9 @@
 
 **Explains it simply — and shows you what it left out.**
 
-<!-- TODO before launch: replace this block with a screenshot of a real receipt.
-     The code-mode "Did not read" band is the one to show. -->
-```
----
-**Read** (4 files)
-- PaymentRetryService.java:30-88, RefundService.java:12-40,
-  RetryPolicy.java:1-25, PaymentController.java
+![A real plainly answer about a small demo repo: it anchors on code the reader wrote, cites file:line, and ends with what it read, what it did not read, and what it left out.](assets/code-mode-receipt.png)
 
-**Did not read** — places this answer could also live
-- worker/ — the nightly job may also retry failed payments
-- WebhookHandler — the provider's callback can mark a payment paid
-
-**Left out**
-- Metrics and logging — doesn't change where your fix goes
-```
+<sub>A real answer, unedited. Rebuild the demo repo with `evals/make-demo-repo.sh` and ask the same question.</sub>
 
 A Claude Code plugin for explanations that fit the person reading them.
 
@@ -140,6 +128,10 @@ neither catch nor admit.
 npm test                       # hook unit tests
 claude plugin validate .       # manifest + skill checks
 claude --plugin-dir .          # try it
+node evals/run.js --runs 2     # live format eval (real sessions, costs tokens)
 ```
+
+The eval checks each answer for the header, the "So you can now" line, the
+receipt, the mode, and the length cap. Prompts are in `evals/prompts.json`.
 
 MIT licensed.
