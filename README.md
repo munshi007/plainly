@@ -17,7 +17,7 @@ A Claude Code plugin for explanations that fit the person reading them.
   not in the source. plainly ends every explanation with a short receipt: what it
   dropped that matters, what it bent, what it added.
 - **Doesn't drift.** You shouldn't have to say "explain it simply" every
-  session. A two-line reminder rides along with each prompt, so the style holds
+  session. A 70-word reminder rides along with every prompt, so the style holds
   in long conversations.
 - **In code, cites everything.** Claims carry `file:line`, the answer is pinned
   to a commit, and it lists the places it *didn't* read. If you've committed to
@@ -123,6 +123,12 @@ always-on part. You lose the per-turn reminder and mode switching.
 
 ## Known interactions
 
+The per-prompt reminder is 70 words (about 390 characters) and fires on
+**every** prompt, including "run the tests and push". It says "if this turn
+explains something", and the model decides whether it applies. On turns that
+explain nothing it changes nothing, but it still costs those tokens.
+`plainly off` stops it for the session.
+
 Plugins that compress Claude's chat style (e.g. caveman) also inject per-turn
 instructions. plainly tells the model to write explanations in full sentences
 regardless; chatter outside explanations follows the other style.
@@ -143,7 +149,13 @@ claude --plugin-dir .          # try it
 node evals/run.js --runs 2     # live format eval (real sessions, costs tokens)
 ```
 
-The eval checks each answer for the header, the "So you can now" line, the
-receipt, the mode, and the length cap. Prompts are in `evals/prompts.json`.
+The eval checks **format**, not accuracy. It checks for the header, the
+"So you can now" line, the receipt, the mode and the length cap. The
+document case (`stale-doc`) adds keyword checks: the body names the current
+design, keeps the source's "not verified" flag, and doesn't state the old
+design as current. Regexes can't tell whether an explanation is right, so a
+pass means the shape is right, not the facts. Accuracy is checked by reading
+the answers against the source; they're saved to the path the eval prints.
+Prompts are in `evals/prompts.json`.
 
 MIT licensed.

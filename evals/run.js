@@ -116,5 +116,5 @@ function score(text, maxWords) {
     console.log(`${ok ? 'PASS' : 'FAIL'}  ${p.id.padEnd(18)} mode=${String(s.mode).padEnd(9)} words=${String(s.words).padStart(4)}/${s.limit}  header=${+s.header} soYouCan=${+s.soYouCan} receipt=${+s.receipt}${p.expectMode && s.mode !== p.expectMode ? `  (expected ${p.expectMode})` : ''}`);
     for (const f of content) console.log(`      ${f}`);
   });
-  console.log(`\n${pass}/${results.length} passed. Answers: ${outDir}`);
+  console.log(`\n${pass}/${results.length} passed format checks. Not an accuracy score: read the answers against the source. Answers: ${outDir}`);
 })();
